@@ -2,7 +2,7 @@
 
 int main() {
     int a;
-    scanf("%i",&a);
-    printf("You enteed: %i",a);
+    scanf("%d",&a);
+    printf("You enteed: %d",a);
     return 0;
 }
