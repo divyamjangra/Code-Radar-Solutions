@@ -4,11 +4,11 @@ int main() {
     scanf("%d",&a);
     if(a>=90);
     printf("A");
-    else if(90<a>=80)
+    else if(90<a && a>=80)
     printf("B");
-    else if(80<a>=70)
+    else if(80<a && a>=70)
     printf("C");
-    else if(70<a>=60)
+    else if(70<a && a>=60)
     printf("D");
     else
     printf("F");
