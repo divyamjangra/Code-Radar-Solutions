@@ -5,11 +5,11 @@ int main() {
     scanf("%d %d %d", &side1, &side2, &side3);
     if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
         if (side1 == side2 && side2 == side3) {
-            printf("Equilateral Triangle");
+            printf("Equilateral");
         } else if (side1 == side2 || side1 == side3 || side2 == side3) {
-            printf("Isosceles Triangle");
+            printf("Isosceles");
         } else {
-            printf("Scalene Triangle");
+            printf("Scalene");
         }
     } 
     return 0;
