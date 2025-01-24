@@ -1,25 +1,25 @@
 #include <stdio.h>
 
 int main() {
-    double num1, num2, result;
+    int num1, num2, result;
     char operator;
 
 
-    scanf("%lf %lf %c", &num1, &num2, &operator);
+    scanf("%d %d %c", &num1, &num2, &operator);
 
     if (operator == '+') {
         result = num1 + num2;
-        printf("%.2lf", result);
+        printf("%d", result);
     } else if (operator == '-') {
         result = num1 - num2;
-        printf("%.2lf", result);
+        printf("%d", result);
     } else if (operator == '*') {
         result = num1 * num2;
-        printf("%.2lf", result);
+        printf("%d", result);
     } else if (operator == '/') {
         if (num2 != 0) {
             result = num1 / num2;
-            printf("%.2lf", result);
+            printf("%d", result);
         } else {
             printf("Error");
         }
