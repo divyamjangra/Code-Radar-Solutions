@@ -1,19 +1,15 @@
 #include <stdio.h>
 
 int main() {
-    int num;
-    scanf("%d", &num);
-
-    int position = num & -num;
-    int count = 1;
-    
-    while (position > 1) {
-        position >>= 1;
-        count++;
+    int n, position = 0;
+    scanf("%d", &n);
+    while (!(n & 1)) {
+        position++;
+        n >>= 1;
     }
-
-    printf("%d", count);
-
+    printf("%d\n", position);
     return 0;
 }
+ 
+
 
