@@ -4,8 +4,16 @@ int main() {
     int num;
     scanf("%d", &num);
 
-    int position = __builtin_ffs(num);
-    printf("%d", position);
+    int position = num & -num;
+    int count = 1;
+    
+    while (position > 1) {
+        position >>= 1;
+        count++;
+    }
+
+    printf("%d", count);
 
     return 0;
 }
+
