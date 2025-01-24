@@ -8,7 +8,7 @@ int main() {
 
     if (light == 'R') {
         printf("Stop");
-    } else if (light == 'G ) {
+    } else if (light == 'G') {
         printf("Go");
     } else if (light == 'Y') {
         printf("Slow down");
