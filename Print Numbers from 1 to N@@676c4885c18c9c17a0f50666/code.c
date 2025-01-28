@@ -1,11 +1,16 @@
 #include <stdio.h>
 
 int main() {
-    int N, i = 0;
-    scanf("%d", &N);  
-    while (i < N) {
-        printf("%d ", i); 
-        i++;
+    int n;
+    scanf("%d", &n);
+    
+    for (int i = 1; i <= n; i++) {
+        if (i != 1) {
+            printf(" ");
+        }
+        printf("%d", i);
     }
+    printf("\n");
+    
     return 0;
 }
