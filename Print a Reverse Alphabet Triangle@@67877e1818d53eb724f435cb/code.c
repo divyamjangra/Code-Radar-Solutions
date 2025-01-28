@@ -2,10 +2,10 @@
 
 int main() {
     int n;
-
+    printf("Enter the number of rows: ");
     scanf("%d", &n);
-    char ch = 'A';
     for (int i = n; i >= 1; i--) {
+        char ch = 'A';
         for (int j = 1; j <= i; j++) {
             printf("%c ", ch++);
         }
@@ -13,4 +13,5 @@ int main() {
     }
     return 0;
 }
+
 
