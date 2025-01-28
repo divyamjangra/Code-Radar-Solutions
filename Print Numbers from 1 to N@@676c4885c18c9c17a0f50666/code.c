@@ -1,15 +1,14 @@
 #include <stdio.h>
 
-void print_numbers(int n) {
-    for (int i = 1; i <= n; i++) {
-        printf("%d ", i); 
-    }
-}
-
 int main() {
-    int n;
+    int n, i = 1;
 
     scanf("%d", &n);  
-    print_numbers(n);  
+    
+    while (i <= n) {
+        printf("%d ", i); 
+        i++;  
+    }
+    
     return 0;
 }
