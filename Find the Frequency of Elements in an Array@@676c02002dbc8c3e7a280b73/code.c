@@ -11,7 +11,7 @@ int main() {
     
     int visited[n];
     for (int i = 0; i < n; i++) {
-        visited[i] = 0;  // Mark all elements as unvisited initially
+        visited[i] = 0;
     }
     
     for (int i = 0; i < n; i++) {
@@ -19,7 +19,7 @@ int main() {
             int count = 1;
             for (int j = i + 1; j < n; j++) {
                 if (arr[i] == arr[j]) {
-                    visited[j] = 1;  // Mark as visited
+                    visited[j] = 1;
                     count++;
                 }
             }
