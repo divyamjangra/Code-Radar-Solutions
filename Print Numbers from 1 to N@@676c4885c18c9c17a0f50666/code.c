@@ -7,13 +7,14 @@ int main() {
     int i = 1;
     while (i <= n) {
         printf("%d", i);
-        if (i < n) {
-            printf(" ");
-        }
+        printf("%s", (i == n) ? "\n" : " ");
         i++;
     }
-    printf("\n");
     
     return 0;
 }
+
+    
+
+
 
