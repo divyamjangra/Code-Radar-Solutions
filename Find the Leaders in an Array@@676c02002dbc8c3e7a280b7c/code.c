@@ -9,6 +9,7 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
+    // Traverse from right to left
     int max_from_right = arr[N - 1];
     printf("%d ", max_from_right);
     
