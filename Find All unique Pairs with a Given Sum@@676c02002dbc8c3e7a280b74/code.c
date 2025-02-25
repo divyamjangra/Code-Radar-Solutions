@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main() {
     int N, T;
@@ -11,19 +12,19 @@ int main() {
     
     scanf("%d", &T);
     
-    int foundPairs = 0;
-    
+    bool printed[N];  
     for (int i = 0; i < N; i++) {
-        for (int j = i + 1; j < N; j++) {
-            if (arr[i] + arr[j] == T) {
-                printf("%d %d\n", arr[i], arr[j]);
-                foundPairs = 1;
-            }
-        }
+        printed[i] = false;
     }
 
-    if (!foundPairs) {
-        printf("\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = i + 1; j < N; j++) {
+            if (arr[i] + arr[j] == T && !printed[i] && !printed[j]) {
+                printf("%d %d\n", arr[i], arr[j]);
+                printed[i] = true;
+                printed[j] = true;
+            }
+        }
     }
 
     return 0;
