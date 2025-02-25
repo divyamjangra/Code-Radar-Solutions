@@ -10,7 +10,7 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    int largest = -1, secondLargest = -1;
+    int largest = -2147483648, secondLargest = -2147483648;
 
     for (int i = 0; i < N; i++) {
         if (arr[i] > largest) {
@@ -21,7 +21,7 @@ int main() {
         }
     }
 
-    if (secondLargest == -1) {
+    if (secondLargest == -2147483648) {
         printf("-1\n");
     } else {
         printf("%d\n", secondLargest);
@@ -29,3 +29,4 @@ int main() {
 
     return 0;
 }
+
