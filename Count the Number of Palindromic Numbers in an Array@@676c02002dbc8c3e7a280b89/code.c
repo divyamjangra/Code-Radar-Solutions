@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 int isPalindrome(int num) {
+    if (num < 0) {
+        return 0; 
+    }
+
     int original = num, reversed = 0, remainder;
     
     while (num != 0) {
@@ -33,3 +37,4 @@ int main() {
 
     return 0;
 }
+
