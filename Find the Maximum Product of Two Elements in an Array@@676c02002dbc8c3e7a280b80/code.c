@@ -2,11 +2,17 @@
 
 int main() {
     int N;
-    scanf("%d", &N);
+    if (scanf("%d", &N) != 1) {
+        printf("Invalid input\n");
+        return 1;  // Exit with an error
+    }
 
     int arr[N];
     for (int i = 0; i < N; i++) {
-        scanf("%d", &arr[i]);
+        if (scanf("%d", &arr[i]) != 1) {
+            printf("Invalid input\n");
+            return 1;  // Exit with an error
+        }
     }
 
     int max1 = arr[0], max2 = arr[0];
@@ -37,4 +43,5 @@ int main() {
 
     return 0;
 }
+
 
