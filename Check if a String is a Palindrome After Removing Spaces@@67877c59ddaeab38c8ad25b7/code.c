@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main() {
     char str[1000], cleaned_str[1000];
     int i, j = 0;
 
     fgets(str, sizeof(str), stdin);
-    
+
     for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] != ' ') {
-            cleaned_str[j++] = str[i];
+        if (isalnum(str[i])) {
+            cleaned_str[j++] = tolower(str[i]);
         }
     }
     cleaned_str[j] = '\0';
@@ -32,3 +33,4 @@ int main() {
 
     return 0;
 }
+
