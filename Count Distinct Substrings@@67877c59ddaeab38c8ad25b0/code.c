@@ -2,26 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 
-int countDistinctSubstrings(char str[]) {
+int countDistinctSubstrings(char* str) {
     int n = strlen(str);
-    int totalSubstrings = 0;
-    
-
-    char **substrings = (char **)malloc(sizeof(char*) * n * (n + 1) / 2);
-    int count = 0;
-    
+    int totalCount = 0;
+    char substrings[n * (n + 1) / 2][n + 1]; 
 
     for (int i = 0; i < n; i++) {
-        for (int j = i; j < n; j++) {
-            substrings[count] = (char *)malloc((j - i + 2) * sizeof(char)); 
-            strncpy(substrings[count], &str[i], j - i + 1);
-            substrings[count][j - i + 1] = '\0';
-            count++;
+        for (int len = 1; len <= n - i; len++) {
+            strncpy(substrings[totalCount], &str[i], len);
+            substrings[totalCount][len] = '\0';
+            totalCount++;
         }
     }
 
-
-    for (int i = 0; i < count; i++) {
+    int distinctCount = 0;
+    for (int i = 0; i < totalCount; i++) {
         int isDistinct = 1;
         for (int j = 0; j < i; j++) {
             if (strcmp(substrings[i], substrings[j]) == 0) {
@@ -30,23 +25,20 @@ int countDistinctSubstrings(char str[]) {
             }
         }
         if (isDistinct) {
-            totalSubstrings++;
+            distinctCount++;
         }
-        free(substrings[i]);
     }
 
-    free(substrings);
-    return totalSubstrings;
+    return distinctCount;
 }
 
 int main() {
-    char str[100];
-    fgets(str, sizeof(str), stdin);
+    char str[1000];
+    scanf("%s", str);
     
-
-    str[strcspn(str, "\n")] = '\0';
-
-    printf("%d\n", countDistinctSubstrings(str));
+    int result = countDistinctSubstrings(str);
+    printf("%d\n", result);
     
     return 0;
 }
+
