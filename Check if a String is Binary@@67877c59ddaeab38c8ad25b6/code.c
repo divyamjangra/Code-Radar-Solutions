@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 int main() {
     char str[1000];
@@ -8,6 +7,11 @@ int main() {
 
     fgets(str, sizeof(str), stdin);
     str[strcspn(str, "\n")] = '\0';
+
+    if (strlen(str) == 0) {
+        printf("Yes\n");
+        return 0;
+    }
 
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] != '0' && str[i] != '1') {
