@@ -9,16 +9,16 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    // Traverse from right to left
-    int max_from_right = arr[N - 1];
-    printf("%d ", max_from_right);
+    int max_right = arr[N - 1]; // The last element is always a leader
+    printf("%d ", max_right);
     
+    // Iterate from second last element to the first element
     for (int i = N - 2; i >= 0; i--) {
-        if (arr[i] >= max_from_right) {
+        if (arr[i] >= max_right) {
             printf("%d ", arr[i]);
-            max_from_right = arr[i];
+            max_right = arr[i]; // Update the max_right
         }
     }
-
+    
     return 0;
 }
