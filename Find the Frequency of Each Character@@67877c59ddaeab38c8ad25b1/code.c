@@ -5,7 +5,7 @@ int main() {
     char str[1000];
     int freq[256] = {0};
 
-    scanf("%s", str);
+    fgets(str, sizeof(str), stdin);
 
     for (int i = 0; str[i] != '\0'; i++) {
         freq[str[i]]++;
@@ -13,7 +13,9 @@ int main() {
 
     for (int i = 0; str[i] != '\0'; i++) {
         if (freq[str[i]] != 0) {
-            printf("%c: %d\n", str[i], freq[str[i]]);
+            if (str[i] != ' ') {
+                printf("%c: %d\n", str[i], freq[str[i]]);
+            }
             freq[str[i]] = 0; 
         }
     }
