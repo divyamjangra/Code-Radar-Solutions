@@ -7,12 +7,12 @@ int main() {
 
     fgets(str, sizeof(str), stdin);
     
-    if (str[0] == '\n') { // If the first character is a newline (meaning no input was given)
+    if (str[0] == '\n') { 
         printf("Yes\n");
         return 0;
     }
 
-    str[strcspn(str, "\n")] = '\0'; // Remove newline if present
+    str[strcspn(str, "\n")] = '\0';
 
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] != '0' && str[i] != '1') {
