@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Declaration of the compare function
+int compare(const void *a, const void *b);
+
 void findPairs(int arr[], int n, int target) {
     // Sort the array to make it easier to find pairs
-    qsort(arr, n, sizeof(int), (int(*)(const void*, const void*))compare);
+    qsort(arr, n, sizeof(int), compare);
     
     int left = 0;
     int right = n - 1;
@@ -29,6 +32,7 @@ void findPairs(int arr[], int n, int target) {
     }
 }
 
+// Compare function for qsort
 int compare(const void *a, const void *b) {
     return (*(int*)a - *(int*)b);
 }
