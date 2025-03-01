@@ -6,12 +6,13 @@ int main() {
     int is_binary = 1;
 
     fgets(str, sizeof(str), stdin);
-    str[strcspn(str, "\n")] = '\0';
-
-    if (strlen(str) == 0) {
+    
+    if (str[0] == '\n') { // If the first character is a newline (meaning no input was given)
         printf("Yes\n");
         return 0;
     }
+
+    str[strcspn(str, "\n")] = '\0'; // Remove newline if present
 
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] != '0' && str[i] != '1') {
@@ -28,3 +29,4 @@ int main() {
 
     return 0;
 }
+
