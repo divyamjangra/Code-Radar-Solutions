@@ -1,33 +1,46 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 
-int main() {
-    int N, T;
-    scanf("%d", &N);
+void findUniquePairs(int arr[], int n, int target) {
+    qsort(arr, n, sizeof(int), (int (*)(const void*, const void*))cmp);
 
-    int arr[N];
-    for (int i = 0; i < N; i++) {
-        scanf("%d", &arr[i]);
-    }
+    int left = 0, right = n - 1;
 
-    scanf("%d", &T);
-
-    bool found[N];
-    for (int i = 0; i < N; i++) {
-        found[i] = false;
-    }
-
-    for (int i = 0; i < N; i++) {
-        if (found[i]) continue;
-        for (int j = i + 1; j < N; j++) {
-            if (arr[i] + arr[j] == T && !found[j]) {
-                printf("%d %d\n", arr[i], arr[j]);
-                found[i] = true;
-                found[j] = true;
-                break;
-            }
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        
+        if (sum == target) {
+            printf("%d %d\n", arr[left], arr[right]);
+            while (left < right && arr[left] == arr[left + 1]) left++;
+            while (left < right && arr[right] == arr[right - 1]) right--;
+            left++;
+            right--;
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
         }
     }
+}
+
+int cmp(const int *a, const int *b) {
+    return (*a - *b);
+}
+
+int main() {
+    int n, target;
+    
+    scanf("%d", &n);
+    
+    int arr[n];
+    
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    scanf("%d", &target);
+    
+    findUniquePairs(arr, n, target);
 
     return 0;
 }
