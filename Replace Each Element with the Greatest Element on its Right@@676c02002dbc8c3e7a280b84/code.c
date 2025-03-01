@@ -1,26 +1,30 @@
 #include <stdio.h>
 
-int main() {
-    int N;
-    scanf("%d", &N);
+void replaceWithGreatestRight(int arr[], int n) {
+    int maxRight = arr[n - 1];
+    arr[n - 1] = -1;
 
-    int arr[N];
-    for (int i = 0; i < N; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    int maxRight = -1;
-    for (int i = N - 2; i >= 0; i--) {
+    for (int i = n - 2; i >= 0; i--) {
         int temp = arr[i];
         arr[i] = maxRight;
         if (temp > maxRight) {
             maxRight = temp;
         }
     }
+}
 
-    arr[N - 1] = -1;
+int main() {
+    int n;
+    scanf("%d", &n);
+    
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
 
-    for (int i = 0; i < N; i++) {
+    replaceWithGreatestRight(arr, n);
+
+    for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
