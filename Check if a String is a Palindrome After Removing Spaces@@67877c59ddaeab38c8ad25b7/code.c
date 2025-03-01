@@ -2,35 +2,33 @@
 #include <string.h>
 
 int main() {
-    char str[1000], cleanedStr[1000];
-    int i, j = 0, len, isPalindrome = 1;
+    char str[1000], cleaned_str[1000];
+    int i, j = 0;
 
     fgets(str, sizeof(str), stdin);
-    str[strcspn(str, "\n")] = '\0';  
-
-    len = strlen(str);
-
-
-    for(i = 0; i < len; i++) {
-        if(str[i] != ' ') {
-            cleanedStr[j++] = str[i];
+    
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] != ' ') {
+            cleaned_str[j++] = str[i];
         }
     }
-    cleanedStr[j] = '\0';
+    cleaned_str[j] = '\0';
 
+    int len = strlen(cleaned_str);
+    int is_palindrome = 1;
 
-    len = strlen(cleanedStr);
-    for(i = 0; i < len / 2; i++) {
-        if(cleanedStr[i] != cleanedStr[len - i - 1]) {
-            isPalindrome = 0;
+    for (i = 0; i < len / 2; i++) {
+        if (cleaned_str[i] != cleaned_str[len - 1 - i]) {
+            is_palindrome = 0;
             break;
         }
     }
 
-    if(isPalindrome)
+    if (is_palindrome) {
         printf("Yes\n");
-    else
+    } else {
         printf("No\n");
+    }
 
     return 0;
 }
