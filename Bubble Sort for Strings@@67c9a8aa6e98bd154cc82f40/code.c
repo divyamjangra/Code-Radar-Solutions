@@ -37,26 +37,3 @@ void sortWords(char words[][199], int numWords) {
     }
   }
 }
-
-// Function to print the words
-void printWords(char words[][199], int numWords) {
-  for (int i = 0; i < numWords; i++) {
-    printf("%s\n", words[i]);
-  }
-}
-
-int main() {
-  int numWords;
-  scanf("%d", &numWords);
-
-  char words[numWords][199];
-  for (int i = 0; i < numWords; i++) {
-    printf("%d", i + 1);
-    scanf("%s", words[i]);
-  }
-
-  sortWords(words, numWords);
-  printWords(words, numWords);
-
-  return 0;
-}
