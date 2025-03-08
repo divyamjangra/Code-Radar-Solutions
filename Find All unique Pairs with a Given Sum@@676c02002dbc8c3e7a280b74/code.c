@@ -36,8 +36,8 @@ void findPairs(int arr[], int n, int target) {
     // Sort the pairs based on the first element of each pair
     qsort(pairs, pairCount, sizeof(pairs[0]), compare);
 
-    // Print the pairs
-    for (int i = 0; i < pairCount; i++) {
+    // Print the pairs in reverse order
+    for (int i = pairCount - 1; i >= 0; i--) {
         printf("%d %d\n", pairs[i][0], pairs[i][1]);
     }
 }
