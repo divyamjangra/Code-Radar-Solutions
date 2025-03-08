@@ -3,15 +3,15 @@
 
 int isBinaryString(char str[]) {
     if (strlen(str) == 0) {
-        return 1; // Consider an empty string as a binary string
+        return 1; 
     }
 
     for (int i = 0; i < strlen(str); i++) {
         if (str[i] != '0' && str[i] != '1') {
-            return 0;  // Not a binary string
+            return 0;  
         }
     }
-    return 1;  // Binary string
+    return 1; 
 }
 
 int main() {
