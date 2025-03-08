@@ -1,33 +1,62 @@
-void swap(char str1[100], char str2[100]) {
-    char temp[100];
-    strcpy(temp, str1);
-    strcpy(str1, str2);
-    strcpy(str2, temp);
+#include <stdio.h>
+#include <string.h>
+
+// Function to swap two words
+void swap(char word1[199], char word2[199]) {
+  char temp[199];
+  int i = 0;
+  while (word1[i] != '\0') {
+    temp[i] = word1[i];
+    i++;
+  }
+  temp[i] = '\0';
+
+  i = 0;
+  while (word2[i] != '\0') {
+    word1[i] = word2[i];
+    i++;
+  }
+  word1[i] = '\0';
+
+  i = 0;
+  while (temp[i] != '\0') {
+    word2[i] = temp[i];
+    i++;
+  }
+  word2[i] = '\0';
 }
 
-void bubbleSort(char arr[][100], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (strcmp(arr[j], arr[j + 1]) > 0) {
-                swap(arr[j], arr[j + 1]);
-            }
-        }
+// Function to sort the words
+void sortWords(char words[][199], int numWords) {
+  for (int i = 0; i < numWords - 1; i++) {
+    for (int j = 0; j < numWords - i - 1; j++) {
+      if (strcmp(words[j], words[j + 1]) > 0) {
+        // Swap the words
+        swap(words[j], words[j + 1]);
+      }
     }
+  }
 }
 
-void printArray(char arr[][100], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%s\n", arr[i]);
-    }
+// Function to print the words
+void printWords(char words[][199], int numWords) {
+  for (int i = 0; i < numWords; i++) {
+    printf("%s\n", words[i]);
+  }
 }
+
 int main() {
-    int n; 
-    scanf("%d", &n);
-    char arr[n][100]; 
-    for (int i = 0; i < n; i++){
-        scanf("%s", arr[i]);
-    }
-    bubbleSort(arr, n);
-    printArray(arr, n);
-    return 0; 
+  int numWords;
+  scanf("%d", &numWords);
+
+  char words[numWords][199];
+  for (int i = 0; i < numWords; i++) {
+    printf("%d", i + 1);
+    scanf("%s", words[i]);
+  }
+
+  sortWords(words, numWords);
+  printWords(words, numWords);
+
+  return 0;
 }
