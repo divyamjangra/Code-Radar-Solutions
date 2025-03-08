@@ -1,32 +1,30 @@
 #include <stdio.h>
 #include <string.h>
 
-int main() {
-    char str[1000];
-    int is_binary = 1;
-
-    fgets(str, sizeof(str), stdin);
-    
-    if (str[0] == '\n') { 
-        printf("Yes\n");
-        return 0;
+int isBinaryString(char str[]) {
+    if (strlen(str) == 0) {
+        return 1; // Consider an empty string as a binary string
     }
 
-    str[strcspn(str, "\n")] = '\0';
-
-    for (int i = 0; str[i] != '\0'; i++) {
+    for (int i = 0; i < strlen(str); i++) {
         if (str[i] != '0' && str[i] != '1') {
-            is_binary = 0;
-            break;
+            return 0;  // Not a binary string
         }
     }
+    return 1;  // Binary string
+}
 
-    if (is_binary) {
+int main() {
+    char str[100];
+    fgets(str, sizeof(str), stdin); 
+
+    str[strcspn(str, "\n")] = 0;
+
+    if (isBinaryString(str)) {
         printf("Yes\n");
     } else {
-        printf("No\n");
+        printf("No\n"); 
     }
 
     return 0;
 }
-
