@@ -21,3 +21,5 @@ void printArray(char arr[][200], int n) {
         printf("%s\n", arr[i]);
     }
 }
+
+    selectionSort(arr, n);
