@@ -1,7 +1,7 @@
 
 #include <stdlib.h>
 
-int findMinSortedSubarray(int arr[], int n) {
+int findUnSortedSubarray(int arr[], int n) {
     int* temp = (int*) malloc(n * sizeof(int));
     for (int i = 0; i < n; i++) {
         temp[i] = arr[i];
