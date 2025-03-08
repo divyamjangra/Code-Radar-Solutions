@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int compare(const void *a, const void *b) {
-    return (*(int*)a - *(int*)b);
+int comparePairs(const void *a, const void *b) {
+    int *pairA = (int *)a;
+    int *pairB = (int *)b;
+    if (pairA[0] != pairB[0]) {
+        return pairA[0] - pairB[0];
+    } else {
+        return pairA[1] - pairB[1];
+    }
 }
 
 void findPairs(int arr[], int n, int target) {
-    qsort(arr, n, sizeof(int), compare);
+    qsort(arr, n, sizeof(int), comparePairs); // Use comparePairs to sort the array
 
     int left = 0;
     int right = n - 1;
@@ -24,8 +30,8 @@ void findPairs(int arr[], int n, int target) {
             pairCount++;
             left++;
             right--;
-            while (left < right && arr[left] == arr[left - 1]) left++;
-            while (left < right && arr[right] == arr[right + 1]) right--;
+            while (left < right && arr[left] == arr[left - 1]) left++;  // Skip duplicates
+            while (left < right && arr[right] == arr[right + 1]) right--;  // Skip duplicates
         } else if (sum < target) {
             left++;
         } else {
@@ -33,11 +39,11 @@ void findPairs(int arr[], int n, int target) {
         }
     }
 
-    // Sort the pairs based on the first element of each pair
-    qsort(pairs, pairCount, sizeof(pairs[0]), compare);
+    // Sort the pairs based on both elements of each pair
+    qsort(pairs, pairCount, sizeof(pairs[0]), comparePairs);
 
-    // Print the pairs in reverse order
-    for (int i = pairCount - 1; i >= 0; i--) {
+    // Print the pairs
+    for (int i = 0; i < pairCount; i++) {
         printf("%d %d\n", pairs[i][0], pairs[i][1]);
     }
 }
@@ -57,4 +63,3 @@ int main() {
 
     return 0;
 }
-
