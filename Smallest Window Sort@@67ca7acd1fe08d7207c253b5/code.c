@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int findMinSortedSubarray(int arr[], int n) {
     int* temp = (int*) malloc(n * sizeof(int));
@@ -27,6 +28,7 @@ int findMinSortedSubarray(int arr[], int n) {
         }
     }
 
+    free(temp);
     if (start == -1) {
         return 0;
     }
@@ -34,3 +36,17 @@ int findMinSortedSubarray(int arr[], int n) {
     return end - start + 1;
 }
 
+int main() {
+    int t;
+    scanf("%d", &t);
+    while (t--) {
+        int n;
+        scanf("%d", &n);
+        int arr[19999];
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &arr[i]);
+        }
+        printf("%d\n", findMinSortedSubarray(arr, n));
+    }
+    return 0;
+}
