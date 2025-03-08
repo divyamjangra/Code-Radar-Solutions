@@ -1,45 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-void distinctPairs(int arr[], int n, int target) {
-    int res[1000][2];
-    int res_count = 0;
+int compare(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
 
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (arr[i] + arr[j] == target) {
-                int first = arr[i] < arr[j] ? arr[i] : arr[j];
-                int second = arr[i] > arr[j] ? arr[i] : arr[j];
-                bool isDistinct = true;
+void findPairs(int arr[], int n, int target) {
+    qsort(arr, n, sizeof(int), compare);
 
-                for (int k = 0; k < res_count; k++) {
-                    if (res[k][0] == first && res[k][1] == second) {
-                        isDistinct = false;
-                        break;
-                    }
-                }
-                
-                if (isDistinct) {
-                    res[res_count][0] = first;
-                    res[res_count][1] = second;
-                    res_count++;
-                }
-            }
+    int left = 0;
+    int right = n - 1;
+
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+
+        if (sum == target) {
+            printf("%d %d\n", arr[left], arr[right]);
+            left++;
+            right--;
+            while (left < right && arr[left] == arr[left - 1]) left++;
+            while (left < right && arr[right] == arr[right + 1]) right--;
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
         }
-    }
-
-    for (int i = 0; i < res_count; i++) {
-        printf("%d %d\n", res[i][0], res[i][1]);
     }
 }
 
 int main() {
-    int arr[] = {1, 5, 7, -1, 5};
-    int target = 6;
-    int n = sizeof(arr) / sizeof(arr[0]);
-    
-    distinctPairs(arr, n, target);
-    
+    int N, T;
+    scanf("%d", &N);
+    int arr[N];
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    scanf("%d", &T);
+
+    findPairs(arr, N, T);
+
     return 0;
 }
