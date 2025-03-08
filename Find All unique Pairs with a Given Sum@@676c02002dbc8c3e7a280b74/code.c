@@ -11,16 +11,19 @@ void findPairs(int arr[], int n, int target) {
     int left = 0;
     int right = n - 1;
 
+    int pairs[n][2]; // To store the pairs
+    int pairCount = 0;
+
+    // Find all pairs and store them
     while (left < right) {
         int sum = arr[left] + arr[right];
 
         if (sum == target) {
-            // Print the pair in ascending order
-            printf("%d %d\n", arr[left], arr[right]);
+            pairs[pairCount][0] = arr[left];
+            pairs[pairCount][1] = arr[right];
+            pairCount++;
             left++;
             right--;
-
-            // Skip duplicates to avoid printing the same pair multiple times
             while (left < right && arr[left] == arr[left - 1]) left++;
             while (left < right && arr[right] == arr[right + 1]) right--;
         } else if (sum < target) {
@@ -28,6 +31,14 @@ void findPairs(int arr[], int n, int target) {
         } else {
             right--;
         }
+    }
+
+    // Sort the pairs based on the first element of each pair
+    qsort(pairs, pairCount, sizeof(pairs[0]), compare);
+
+    // Print the pairs
+    for (int i = 0; i < pairCount; i++) {
+        printf("%d %d\n", pairs[i][0], pairs[i][1]);
     }
 }
 
