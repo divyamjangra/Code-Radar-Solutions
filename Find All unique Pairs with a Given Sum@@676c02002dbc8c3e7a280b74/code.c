@@ -15,13 +15,12 @@ void findPairs(int arr[], int n, int target) {
         int sum = arr[left] + arr[right];
 
         if (sum == target) {
-            if (arr[left] < arr[right]) {
-                printf("%d %d\n", arr[left], arr[right]);
-            } else {
-                printf("%d %d\n", arr[right], arr[left]);
-            }
+            // Print the pair in ascending order
+            printf("%d %d\n", arr[left], arr[right]);
             left++;
             right--;
+
+            // Skip duplicates to avoid printing the same pair multiple times
             while (left < right && arr[left] == arr[left - 1]) left++;
             while (left < right && arr[right] == arr[right + 1]) right--;
         } else if (sum < target) {
