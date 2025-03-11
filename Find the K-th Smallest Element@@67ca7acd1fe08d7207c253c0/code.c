@@ -24,22 +24,4 @@ int kthSmallest(int arr[], int n, int k) {
     return arr[k - 1];
 }
 
-int main() {
-    int n, k;
-    
-    scanf("%d", &n);
-    
-    int arr[n];
-    
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    
-    scanf("%d", &k);
-    
-    int result = kthSmallest(arr, n, k);
-    
-    printf("%d\n", result);
-    
-    return 0;
-}
+
