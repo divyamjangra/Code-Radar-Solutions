@@ -24,14 +24,3 @@ void printArray(char arr[][200], int n) {
     }
 }
 
-int main() {
-    int n;
-    scanf("%d", &n);
-    char arr[n][200]; 
-    for(int i = 0; i < n; i++){
-        scanf("%199s", arr[i]); 
-    }
-    selectionSort(arr, n);
-    printArray(arr, n);
-    return 0;
-}
