@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 
 void insertionSort(char arr[][169], int n) {
     for (int i = 1; i < n; i++) {
