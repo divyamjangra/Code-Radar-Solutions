@@ -1,20 +1,33 @@
-void insertionSort(char arr[][100], int n) {
+#include <stdio.h>
+#include <string.h>
+
+void insertionSort(char arr[][169], int n) {
     for (int i = 1; i < n; i++) {
-        char key[100];
+        char key[169];
+        strcpy(key, arr[i]);
         int j = i - 1;
-        while (j >= 0 && strcmp(arr[j], arr[i]) > 0) {
-            j--;
+        while (j >= 0 && strcmp(arr[j], key) > 0) {
+            strcpy(arr[j + 1], arr[j]);
+            j = j - 1;
         }
-        for (int k = i; k > j + 1; k--) {
-            for (int m = 0; arr[k-1][m] != '\0'; m++) {
-                arr[k][m] = arr[k-1][m];
-            }
-        }
+        strcpy(arr[j + 1], key);
     }
 }
 
-void printArray(char arr[][100], int n) {
+void printArray(char arr[][169], int n) {
     for (int i = 0; i < n; i++) {
         printf("%s\n", arr[i]);
     }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    char arr[n][169];
+    for (int i = 0; i < n; i++) {
+        scanf("%s", arr[i]);
+    }
+    insertionSort(arr, n);
+    printArray(arr, n);
+    return 0;
 }
