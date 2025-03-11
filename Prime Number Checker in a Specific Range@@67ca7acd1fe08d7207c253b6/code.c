@@ -20,7 +20,7 @@ void printPrimesInRange(int a, int b) {
             if (foundPrime) {
                 printf(""); 
             }
-            printf("%d", i); 
+            printf("%d ", i); 
             foundPrime = 1;
         }
     }
