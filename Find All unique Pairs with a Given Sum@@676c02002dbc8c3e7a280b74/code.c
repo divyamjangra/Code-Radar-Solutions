@@ -4,14 +4,15 @@ void findPairs(int arr[], int n, int target) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (arr[i] + arr[j] == target) {
-                int found = 0;
+                int isDuplicate = 0;
+                // Check if we've already printed this pair
                 for (int k = 0; k < i; k++) {
                     if (arr[k] == arr[i]) {
-                        found = 1;
+                        isDuplicate = 1;
                         break;
                     }
                 }
-                if (!found) {
+                if (!isDuplicate) {
                     printf("%d %d\n", arr[i], arr[j]);
                 }
             }
